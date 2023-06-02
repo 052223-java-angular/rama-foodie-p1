@@ -25,7 +25,8 @@ This is a Full Stack web application. The application will be primarily built us
 
 ## Stretch Goals
 
-- Adding an admin role that can add, remove uses or moderate their comments.
+- Adding an admin role that can add, remove uses or moderate their comments
+- Make friends with other users and only allow your friends to view, rate and comment on your recipe( Authorized users only)
 - Inmplement an internal messaging system to communicate with other users.
 - Implementing  3 party authorization.
 
