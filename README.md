@@ -10,7 +10,7 @@ This is a Full Stack web application. The application will be primarily built us
 - **As a user**, I want to edit my user profile.
 - **As a user**, I want to browse through all the available recipes, no logging required
 - **As a user**, I want to search for recipes by name, nutrition, cusine or calories range.
-- **As a user**, I want to add recipes to my list , logged users only
+- **As a user**, I want to add and remove recipes to my list , logged users only
 - **As a user**, I want to view other users recipes and rate their recipes with comments ( logged users only).
 
 
@@ -18,7 +18,7 @@ This is a Full Stack web application. The application will be primarily built us
 
 - User registration and login.
 - Browsing and searching for recipes.
-- Adding recipes to my list.
+- Adding and deleting recipes to my list.
 - Viewing and rating user's recipe.
 
 
