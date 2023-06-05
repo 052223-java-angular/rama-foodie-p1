@@ -18,16 +18,15 @@ This is a Full Stack web application. The application will be primarily built us
 
 - User registration and login.
 - Browsing and searching for recipes.
-- Editing User Profile.
 - Adding recipes to my list.
-- Viewing and rating other user's recipe.
+- Viewing and rating user's recipe.
 
 
 ## Stretch Goals
 
 - Adding an admin role that can add, remove uses or moderate their comments
-- Make friends with other users and only allow your friends to view, rate and comment on your recipe( Authorized users only)
-- Inmplement an internal messaging system to communicate with other users.
+- Edit User Profile.
+- Implement an internal messaging system to communicate with other users.
 - Implementing  3 party authorization.
 
 ## Tech Stacks
@@ -47,8 +46,6 @@ This is a Full Stack web application. The application will be primarily built us
 - **Clean Codebase**: All code should be clean and well-documented. The repository should not include any unnecessary files or folders such as the `target/`, `.DS_Store`, etc. All files and directories should be appropriately named and organized.
 
 - **Database Design**: The database should be designed following the principles of the 3rd Normal Form (3NF) to ensure data integrity and efficiency. An Entity Relationship Diagram (ERD) should be included in the documentation.
-
-- **3 rd party Integration**: App should communicate with a 3rd party API.
 
 - **Secure**: All sensitive user data such as passwords must be securely hashed before storing it in the database. The application should not display any sensitive information in error messages.
 
