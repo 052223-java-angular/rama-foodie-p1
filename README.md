@@ -6,28 +6,30 @@ This is a Full Stack web application. The application will be primarily built us
 ## User Stories
 
 - **As a user**, I want to register an account with the app.
-- **As a user**, I want to log in to my account so that I can access my recipe and its ratings.
-- **As a user**, I want to edit my user profile.
+- **As a user**, I want to log in to my account so that I can access the recipes.
 - **As a user**, I want to browse through all the available recipes, no logging required
 - **As a user**, I want to search for recipes by name, nutrition, cusine or calories range.
-- **As a user**, I want to add and remove recipes to my list , logged users only
-- **As a user**, I want to view other users recipes and rate their recipes with comments ( logged users only).
+- **As a user**, I want to have my list of recipes where I can add and remove recipes from the list , logged users only
+- **As a user**, I want to view the recipes and rate them.( logged users only).
+- **As a user**, I want to edit my user profile.
 
 
 ## MVP (Minimum Viable Product)
 
 - User registration and login.
 - Browsing and searching for recipes.
-- Adding and deleting recipes to my list.
-- Viewing and rating user's recipe.
+- Adding recipes to my list.
+- Viewing and deleting recipes from my list.
+- Review the recipes.
 
 
 ## Stretch Goals
 
 - Adding an admin role that can add, remove users or moderate their comments
 - Edit User Profile.
+- Modifying and deleting reviews only by admin or the owner that created the review.
 - Implement an internal messaging system to communicate with other users.
-- Implementing  3 party authorization.
+- Implement 3 party authorization.
 
 ## Tech Stacks
 
