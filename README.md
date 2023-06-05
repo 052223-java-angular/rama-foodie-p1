@@ -24,7 +24,7 @@ This is a Full Stack web application. The application will be primarily built us
 
 ## Stretch Goals
 
-- Adding an admin role that can add, remove uses or moderate their comments
+- Adding an admin role that can add, remove users or moderate their comments
 - Edit User Profile.
 - Implement an internal messaging system to communicate with other users.
 - Implementing  3 party authorization.
