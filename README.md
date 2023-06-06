@@ -20,14 +20,14 @@ This is a Full Stack web application. The application will be primarily built us
 - Browsing and searching for recipes.
 - Adding recipes to my list.
 - Viewing and deleting recipes from my list.
+- Modifying and deleting reviews only by the owner that created the review.
+- Edit User Profile.
 - Review the recipes.
 
 
 ## Stretch Goals
 
 - Adding an admin role that can add, remove users or moderate their comments
-- Edit User Profile.
-- Modifying and deleting reviews only by admin or the owner that created the review.
 - Implement an internal messaging system to communicate with other users.
 - Implement 3 party authorization.
 
