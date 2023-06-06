@@ -2,7 +2,7 @@
 
 ## Introduction
 
-This is a Full Stack web application. The application will be primarily built using Java, HTML, CSS and angular. The project will utilize a PostgreSQL database to store user's profiles and their recipes and will allow user to share recipes and rate them.
+This is a Full Stack web application. The application 'cookbook' will be primarily built using Java, HTML, CSS and angular. The project will utilize a PostgreSQL database to store user's profiles and their recipes and will allow user to share recipes and rate them.
 ## User Stories
 
 - **As a user**, I want to register an account with the app.
