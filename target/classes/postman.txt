@@ -1,0 +1,35 @@
+For register
+Post request
+http://localhost:8080/cookbook/api/auth/register
+
+{
+    "username": "tester123",
+    "password": "testerpass123",
+    "confirmPassword": "testerpass123"
+    
+}
+
+Login
+Post request
+http://localhost:8080/cookbook/api/auth/login
+{
+    "id": "c9fea9ff-a5f6-4e4c-8014-27b74160df23",
+    "username": "tester123",
+    "role": "USER",
+    "token": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ0ZXN0ZXIxMjMiLCJyb2xlIjoiVVNFUiIsImlkIjoiYzlmZWE5ZmYtYTVmNi00ZTRjLTgwMTQtMjdiNzQxNjBkZjIzIiwiZXhwIjoxNjg2MDU0MzU1LCJpYXQiOjE2ODYwMTgzNTV9.Fy0Hw1Op24O8NjmUn6rxwnsM-LftnCU_sKllbvKZBfE"
+}
+
+http://localhost:8080/cookbook/api/recipe/byid/23 //Get request
+
+Post request ( token in header)
+http://localhost:8080/cookbook/api/review/create
+
+requestbody
+{
+    
+   "comments": "it was great",
+   "rate": 5,
+   "recipe_id": 23
+    
+    
+}

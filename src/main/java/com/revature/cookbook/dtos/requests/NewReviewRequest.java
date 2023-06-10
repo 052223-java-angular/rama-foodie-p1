@@ -9,7 +9,8 @@ import lombok.Setter;
 @NoArgsConstructor
 @Getter
 @Setter
-public class NewRestaurantRequest {
-    private String name;
-    private String token;
+public class NewReviewRequest {
+    private String recipe_id;
+    private String comments;
+    private int rate;
 }

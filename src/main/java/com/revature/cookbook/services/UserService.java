@@ -98,4 +98,10 @@ public class UserService {
     public boolean isSamePassword(String password, String confirmPassword) {
         return password.equals(confirmPassword);
     }
+
+    public String getUserId(String username) {
+        Optional<User> userOpt = userRepo.findByUsername(username);
+        return userOpt.get().getId();
+    }
+
 }

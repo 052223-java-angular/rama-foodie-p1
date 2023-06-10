@@ -28,5 +28,6 @@ public class Recipe {
 
     @OneToMany(mappedBy = "recipe", fetch = FetchType.LAZY)
     @JsonManagedReference
-    private Set<Review> reviews;
+    public Set<Review> reviews;
 }
+

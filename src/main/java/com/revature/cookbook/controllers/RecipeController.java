@@ -12,8 +12,11 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.revature.cookbook.dtos.requests.NewRestaurantRequest;
+//import com.revature.cookbook.dtos.requests.NewRestaurantRequest;
 //import com.revature.cookbook.entities.Restaurant;
+
+import com.revature.cookbook.dtos.requests.NewRecipeRequest;
+import com.revature.cookbook.entities.Review;
 
 import jakarta.servlet.http.HttpServletRequest;
 
@@ -25,6 +28,8 @@ import com.revature.cookbook.entities.Recipe;
 import lombok.AllArgsConstructor;
 
 import java.util.Optional;
+import java.util.*;
+
 
 @AllArgsConstructor
 @RestController
@@ -37,7 +42,7 @@ public class RecipeController {
 
 
     @PostMapping("/create")
-    public ResponseEntity<?> createRestaurant(@RequestBody NewRestaurantRequest req, HttpServletRequest sreq) {
+    public ResponseEntity<?> createRestaurant(@RequestBody NewRecipeRequest req, HttpServletRequest sreq) {
         // only admins can create new restaurant
 
         String token = sreq.getHeader("auth-token");
@@ -49,18 +54,14 @@ public class RecipeController {
     @GetMapping("/all")
     public ResponseEntity<List<Recipe>> getAllRecipes() {
         List<Recipe> list = recipeService.getAllRecipes();
-        // userservice to call login method
-        //List<Recipe> list = recipeService.getAllRecipes();
         return ResponseEntity.status(HttpStatus.OK).body(list);
-        //return null;
     }
 
     @GetMapping("/byid/{id}")
     public ResponseEntity<Recipe> getRecipeById(@PathVariable(required = false) String id ) {
         String str = new String(id);
         Recipe recipe = recipeService.getById(str);
-        //RecipeInfo ri = new RecipeInfo();
+        
         return ResponseEntity.status(HttpStatus.OK).body(recipe);
-        //return null;
     }
 }
