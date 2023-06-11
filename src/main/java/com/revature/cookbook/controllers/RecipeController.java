@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.revature.cookbook.dtos.requests.NewRecipeRequest;
 //import com.revature.cookbook.dtos.requests.NewRestaurantRequest;
 //import com.revature.cookbook.entities.Restaurant;
 
@@ -38,9 +39,6 @@ public class RecipeController {
     // dependency injection ie. services
     private final RecipeService recipeService;
     
-    //private final RecipeService recipeService = new RecipeService();
-
-
     @PostMapping("/create")
     public ResponseEntity<?> createRestaurant(@RequestBody NewRecipeRequest req, HttpServletRequest sreq) {
         // only admins can create new restaurant
@@ -63,5 +61,19 @@ public class RecipeController {
         Recipe recipe = recipeService.getById(str);
         
         return ResponseEntity.status(HttpStatus.OK).body(recipe);
+    }
+
+    @GetMapping("/bycusine/{cusine}")
+    public ResponseEntity<List<Recipe>> getByCusine(@PathVariable(required = false) String cusine) {
+        List<Recipe> list = recipeService.getByCusine(cusine);
+        return ResponseEntity.status(HttpStatus.OK).body(list);
+    }
+
+    @GetMapping("/calrange")
+    public ResponseEntity<List<Recipe>> getByCalorie(@RequestBody NewRecipeRequest req) {
+       
+        //recipeService.getByCalorie(req);
+        List<Recipe> list = recipeService.getByCalorieRange(req);
+        return ResponseEntity.status(HttpStatus.OK).body(list);
     }
 }
