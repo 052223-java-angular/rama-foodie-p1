@@ -26,6 +26,23 @@ public class Recipe {
     @Id
     private String id;
 
+     // set the column title to title
+    @Column(name = "title", nullable = false)
+    private String title;
+
+     // set the column username to username
+    @Column(name = "calories", nullable = false)
+    private int calories;
+
+     // set the column username to username
+    @Column(name = "cusine", nullable = false)
+    private String cusine;
+
+
+    // by default column password is password
+    @Column(nullable = false)
+    private String url;
+
     @OneToMany(mappedBy = "recipe", fetch = FetchType.LAZY)
     @JsonManagedReference
     public Set<Review> reviews;

@@ -12,4 +12,8 @@ import lombok.Setter;
 public class NewRecipeRequest {
     private String name;
     private String token;
+    private int calorie;
+    private int upperRange;
+    private int lowerRange;
+
 }

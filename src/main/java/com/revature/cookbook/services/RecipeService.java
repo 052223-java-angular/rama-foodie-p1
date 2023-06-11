@@ -6,6 +6,7 @@ import org.mindrot.jbcrypt.BCrypt;
 import org.springframework.stereotype.Service;
 
 import com.revature.cookbook.dtos.requests.NewLoginRequest;
+import com.revature.cookbook.dtos.requests.NewRecipeRequest;
 import com.revature.cookbook.dtos.requests.NewUserRequest;
 import com.revature.cookbook.dtos.responses.Principal;
 import com.revature.cookbook.entities.Role;
@@ -13,7 +14,9 @@ import com.revature.cookbook.entities.User;
 import com.revature.cookbook.entities.Recipe;
 import com.revature.cookbook.repositories.UserRepository;
 import com.revature.cookbook.repositories.RecipeRepository;
+import com.revature.cookbook.utils.custom_exceptions.ReviewNotFoundException;
 import com.revature.cookbook.utils.custom_exceptions.UserNotFoundException;
+import com.revature.cookbook.utils.custom_exceptions.CusineNotFoundException;
 
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
@@ -36,25 +39,35 @@ public class RecipeService {
 
 
     public List<Recipe> getAllRecipes() {
-        //Recipe recipe1 = new Recipe("recipe1");
-        //Recipe recipe2 = new Recipe("recipe2");
-
         return recipeRepo.findAll();
-      
-        //List<Recipe> list = new ArrayList<Recipe>();
-        //list.add(recipe1);
-        //list.add(recipe2);
-
-        // Get from the db
-        //return null;
     }
 
     public Recipe getById(String id) {
         
         Optional<Recipe> recipeOpt =  recipeRepo.findById(id);
-
-        return recipeOpt.get();
+        if (recipeOpt.isPresent()){
+            return recipeOpt.get();
+        }
+        throw new CusineNotFoundException("This recipe does not exist");
     }
+
+    public List<Recipe> getByCusine(String cusine) {
+        
+        List<Recipe> recipeList =  recipeRepo.findByCusine(cusine);
+        if( recipeList.size() > 0){
+            return recipeList;
+        } 
+        throw new CusineNotFoundException("No recipe exists for this cusine");
+    }
+
+     public List<Recipe> getByCalorieRange(NewRecipeRequest req) {
+        
+        int lowerRange = req.getLowerRange();
+        int upperRange = req.getUpperRange();
+        
+        return recipeRepo.findByRecipes(lowerRange, upperRange);
+    }
+
 
 
 }
