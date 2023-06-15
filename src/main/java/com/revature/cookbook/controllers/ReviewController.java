@@ -46,6 +46,45 @@ public class ReviewController {
 
     @PostMapping("/create")
     public ResponseEntity<?> createReview(@RequestBody NewReviewRequest req, HttpServletRequest sreq ) {
+
+        String token = sreq.getHeader("auth-token");
+
+        //exception is thrown if there is an error.
+        String username = userService.authenticateUser(token);
+
+        reviewService.save(req, username);
+        return ResponseEntity.status(HttpStatus.CREATED).build();
+    }
+
+    
+    @DeleteMapping("/delete/{id}")
+    public ResponseEntity<?> deleteById(@PathVariable(value = "id") String recipe_id, HttpServletRequest sreq ) {
+        String token = sreq.getHeader("auth-token");
+
+        //Exception is thrown if there is an error.
+        String username = userService.authenticateUser(token);
+
+        reviewService.deleteReview(username, recipe_id);
+
+        return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
+    }
+
+}
+
+/*************************************************************************************************************
+@AllArgsConstructor
+@RestController
+@RequestMapping("/review")
+public class ReviewController {
+    // dependency injection ie. services
+    private final RecipeService recipeService;
+    private final UserService userService;
+    private final JwtTokenService tokenService;
+    private final ReviewService reviewService;
+
+
+    @PostMapping("/create")
+    public ResponseEntity<?> createReview(@RequestBody NewReviewRequest req, HttpServletRequest sreq ) {
         // only admins can create new restaurant
 
         String token = sreq.getHeader("auth-token");
@@ -95,3 +134,4 @@ public class ReviewController {
     }
 
 }
+*****/

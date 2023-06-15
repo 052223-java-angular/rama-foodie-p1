@@ -39,15 +39,6 @@ public class RecipeController {
     // dependency injection ie. services
     private final RecipeService recipeService;
     
-    @PostMapping("/create")
-    public ResponseEntity<?> createRestaurant(@RequestBody NewRecipeRequest req, HttpServletRequest sreq) {
-        // only admins can create new restaurant
-
-        String token = sreq.getHeader("auth-token");
-
-        // get token from req
-        return ResponseEntity.status(HttpStatus.CREATED).build();
-    }
 
     @GetMapping("/all")
     public ResponseEntity<List<Recipe>> getAllRecipes() {

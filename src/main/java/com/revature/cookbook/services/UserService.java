@@ -15,6 +15,8 @@ import com.revature.cookbook.utils.custom_exceptions.UserNotFoundException;
 
 import lombok.AllArgsConstructor;
 
+import com.revature.cookbook.services.JwtTokenService;
+
 /**
  * The UserService class provides operations related to user management.
  */
@@ -23,6 +25,8 @@ import lombok.AllArgsConstructor;
 public class UserService {
     private final RoleService roleService;
     private final UserRepository userRepo;
+    private final JwtTokenService jwtTokenService;
+   
 
     /**
      * Registers a new user based on the provided information.
@@ -103,5 +107,23 @@ public class UserService {
         Optional<User> userOpt = userRepo.findByUsername(username);
         return userOpt.get().getId();
     }
+
+    public Optional<User> findByUserName(String username) {
+        Optional<User> userOpt = userRepo.findByUsername(username);
+        if(userOpt.isPresent()) {
+            return userOpt;
+        }
+        throw new UserNotFoundException("User not found");
+    }
+
+    public String authenticateUser( String token ){
+        jwtTokenService.isTokenExpired(token);
+        String username = jwtTokenService.extractUsername(token);
+        System.out.println("username " + username);
+        Optional<User> userOpt = findByUserName(username);
+        return username;
+    }
+ 
+
 
 }

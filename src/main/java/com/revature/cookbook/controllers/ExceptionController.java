@@ -14,6 +14,7 @@ import com.revature.cookbook.utils.custom_exceptions.RoleNotFoundException;
 import com.revature.cookbook.utils.custom_exceptions.UserNotFoundException;
 import com.revature.cookbook.utils.custom_exceptions.ReviewNotFoundException;
 import com.revature.cookbook.utils.custom_exceptions.CusineNotFoundException;
+import com.revature.cookbook.utils.custom_exceptions.InvalidTokenException;
 
 @RestControllerAdvice
 public class ExceptionController {
@@ -80,6 +81,21 @@ public class ExceptionController {
      */
     @ExceptionHandler(CusineNotFoundException.class)
     public ResponseEntity<Map<String, Object>> handleReviewNotFoundException(CusineNotFoundException e) {
+        Map<String, Object> map = new HashMap<>();
+        map.put("timestamp", new Date(System.currentTimeMillis()));
+        map.put("message", e.getMessage());
+        return ResponseEntity.status(HttpStatus.BAD_GATEWAY).body(map);
+    }
+
+    /**
+     * Exception handler for CusineNotFoundException.
+     *
+     * @param e the InvalidTokenException to handle
+     * @return ResponseEntity with the error message and status code indicating review
+     *         not found
+     */
+    @ExceptionHandler(InvalidTokenException.class)
+    public ResponseEntity<Map<String, Object>> handleInvalidTokenException(InvalidTokenException e) {
         Map<String, Object> map = new HashMap<>();
         map.put("timestamp", new Date(System.currentTimeMillis()));
         map.put("message", e.getMessage());
