@@ -11,8 +11,12 @@ import org.springframework.stereotype.Service;
 import com.revature.cookbook.dtos.responses.Principal;
 
 import io.jsonwebtoken.Claims;
+import io.jsonwebtoken.ExpiredJwtException;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
+
+import com.revature.cookbook.utils.custom_exceptions.UserNotFoundException;
+import com.revature.cookbook.utils.custom_exceptions.InvalidTokenException;
 
 /**
  * Service class for handling JWT token generation and validation.
@@ -108,4 +112,43 @@ public class JwtTokenService {
     public String extractUserRole(String token) {
         return (String) extractAllClaims(token).get("role");
     }
+
+     /**
+
+     * Checks if the token is Expired.
+     *
+     * @param token The JWT token.
+     * @return true if the token is expired and throw exception.
+     */
+
+    public boolean isTokenExpired(String token) {
+
+        try {
+
+            Claims claims = Jwts.parser().setSigningKey(SECRET_KEY).parseClaimsJws(token).getBody();
+
+            long expirationTime = claims.getExpiration().getTime();
+
+            long currentTime = System.currentTimeMillis();
+
+            return currentTime > expirationTime;
+
+        } catch (ExpiredJwtException e) {
+            throw new InvalidTokenException("Session Expired Login Again");
+
+        }
+
+    }
+
+    public boolean validateTokenFromClient(String token) {
+      return isTokenExpired(token);
+    }
+
+    // public void authenticateUser( String token ){
+    //     isTokenExpired(token);
+    //     String username = extractUsername(token);
+    //     Optional<User> userOpt = userService.findByUserName(token);
+        
+    // }
+
 }
