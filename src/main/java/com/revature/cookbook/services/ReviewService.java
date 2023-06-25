@@ -25,6 +25,7 @@ import com.revature.cookbook.utils.custom_exceptions.ReviewNotFoundException;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 
+import com.revature.cookbook.dtos.responses.FavoriteRes;
 import com.revature.cookbook.dtos.responses.Greeter;
 import java.util.Date;
 import java.util.HashMap;
@@ -51,6 +52,13 @@ public class ReviewService {
         Optional<Review> reviewOpt =  reviewRepo.findById(id);
 
         return reviewOpt.get();
+    }
+
+    public List<Review>  getByRid(String id) {
+        
+        List <Review > reviewOpt =  reviewRepo.getReviewByRid(id);
+
+        return reviewOpt;
     }
 
     

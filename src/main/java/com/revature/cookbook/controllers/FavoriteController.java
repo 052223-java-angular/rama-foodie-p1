@@ -38,6 +38,9 @@ import com.revature.cookbook.services.FavoriteService;
 
 import com.revature.cookbook.utils.custom_exceptions.InvalidTokenException;
 
+import org.springframework.web.bind.annotation.CrossOrigin;
+
+@CrossOrigin
 @AllArgsConstructor
 @RestController
 @RequestMapping("/favorite")
@@ -65,12 +68,17 @@ public class FavoriteController {
 
 
     @PostMapping("/myfav")
-    public ResponseEntity<List<FavoriteRes>> getMyFavorites(@RequestBody NewFavoriteRequest req, HttpServletRequest sreq ) {
+    //public ResponseEntity<List<FavoriteRes>> getMyFavorites(@RequestBody NewFavoriteRequest req, HttpServletRequest sreq ) {
+    public ResponseEntity<List<FavoriteRes>> getMyFavorites( HttpServletRequest sreq ) {
 
         String token = sreq.getHeader("auth-token");
+
+        //System.out.println("token is " + token );
         
         //exception is thrown if there is an error.
         String username = userService.authenticateUser(token);
+
+        //System.out.println("username in fav controller " + username );
 
         List<FavoriteRes> list = favoriteService.getAllRecipes(username);
         return ResponseEntity.status(HttpStatus.OK).body(list);

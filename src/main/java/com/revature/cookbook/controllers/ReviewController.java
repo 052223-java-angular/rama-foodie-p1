@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.CrossOrigin;
 
 //import com.revature.cookbook.dtos.requests.NewRestaurantRequest;
 import com.revature.cookbook.dtos.requests.NewReviewRequest;
@@ -33,6 +34,7 @@ import com.revature.cookbook.services.UserService;
 import com.revature.cookbook.services.ReviewService;
 import com.revature.cookbook.services.RecipeService;
 
+@CrossOrigin
 @AllArgsConstructor
 @RestController
 @RequestMapping("/review")
@@ -49,12 +51,38 @@ public class ReviewController {
 
         String token = sreq.getHeader("auth-token");
 
+        System.out.println("token is " + token);
+
         //exception is thrown if there is an error.
         String username = userService.authenticateUser(token);
 
         reviewService.save(req, username);
         return ResponseEntity.status(HttpStatus.CREATED).build();
     }
+
+    
+    @GetMapping("/byrid/{id}")
+    public ResponseEntity<List<Review>> getReviewByRid(@PathVariable(required = false) String id ) {
+        String str = new String(id);
+        List<Review> reviews = reviewService.getByRid(str);
+        
+        return ResponseEntity.status(HttpStatus.OK).body(reviews);
+    }
+
+
+
+    // public ResponseEntity<?> createReview(@RequestBody NewReviewRequest req, HttpServletRequest sreq ) {
+
+    //     String token = sreq.getHeader("auth-token");
+
+    //     //exception is thrown if there is an error.
+    //     String username = userService.authenticateUser(token);
+
+    //     reviewService.save(req, username);
+    //     return ResponseEntity.status(HttpStatus.CREATED).build();
+    // }
+
+
 
     
     @DeleteMapping("/delete/{id}")

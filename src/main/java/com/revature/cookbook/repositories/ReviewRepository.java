@@ -34,7 +34,11 @@ public interface ReviewRepository extends JpaRepository<Review, String> {
 
     List<Review> findByUsername(String username);
 
+    List<Review> findByRid(String rid);
+
     void deleteById(String id);
+
+    List <Review> getReviewByRid(String id);
 
     //Optional<Review> findByUsername(String username);
 

@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.CrossOrigin;
 
 import com.revature.cookbook.dtos.requests.NewRecipeRequest;
 //import com.revature.cookbook.dtos.requests.NewRestaurantRequest;
@@ -31,7 +32,7 @@ import lombok.AllArgsConstructor;
 import java.util.Optional;
 import java.util.*;
 
-
+@CrossOrigin
 @AllArgsConstructor
 @RestController
 @RequestMapping("/recipe")
@@ -54,13 +55,14 @@ public class RecipeController {
         return ResponseEntity.status(HttpStatus.OK).body(recipe);
     }
 
+    @CrossOrigin
     @GetMapping("/bycusine/{cusine}")
     public ResponseEntity<List<Recipe>> getByCusine(@PathVariable(required = false) String cusine) {
         List<Recipe> list = recipeService.getByCusine(cusine);
         return ResponseEntity.status(HttpStatus.OK).body(list);
     }
 
-    @GetMapping("/calrange")
+    @PostMapping("/calrange")
     public ResponseEntity<List<Recipe>> getByCalorie(@RequestBody NewRecipeRequest req) {
        
         //recipeService.getByCalorie(req);

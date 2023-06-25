@@ -64,8 +64,15 @@ public class RecipeService {
         
         int lowerRange = req.getLowerRange();
         int upperRange = req.getUpperRange();
+
+        System.out.println("lower range " + lowerRange );
+        System.out.println("upperRange " + upperRange );
         
         return recipeRepo.findByRecipes(lowerRange, upperRange);
+    }
+
+    public Recipe getByRid(String str) {
+        return null;
     }
 
 

@@ -35,4 +35,6 @@ public interface RecipeRepository extends JpaRepository<Recipe, String> {
 
     @Query(value = "select * from recipes r where r.calories >= :lowerRange and r.calories <= :upperRange", nativeQuery=true)
     List<Recipe>findByRecipes( int lowerRange, int upperRange);
+
+   
 }
