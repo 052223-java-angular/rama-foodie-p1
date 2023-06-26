@@ -34,10 +34,11 @@ import com.revature.cookbook.services.UserService;
 import com.revature.cookbook.services.ReviewService;
 import com.revature.cookbook.services.RecipeService;
 
-@CrossOrigin
+
 @AllArgsConstructor
 @RestController
 @RequestMapping("/review")
+@CrossOrigin(origins = "http://rscookbookbucket.s3-website-us-west-1.amazonaws.com")
 public class ReviewController {
     // dependency injection ie. services
     private final RecipeService recipeService;
@@ -84,7 +85,7 @@ public class ReviewController {
 
 
 
-    
+    @CrossOrigin
     @DeleteMapping("/delete/{id}")
     public ResponseEntity<?> deleteById(@PathVariable(value = "id") String recipe_id, HttpServletRequest sreq ) {
         String token = sreq.getHeader("auth-token");

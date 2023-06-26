@@ -32,7 +32,8 @@ import lombok.AllArgsConstructor;
 import java.util.Optional;
 import java.util.*;
 
-@CrossOrigin
+
+@CrossOrigin(origins = "http://rscookbookbucket.s3-website-us-west-1.amazonaws.com")
 @AllArgsConstructor
 @RestController
 @RequestMapping("/recipe")
@@ -40,13 +41,14 @@ public class RecipeController {
     // dependency injection ie. services
     private final RecipeService recipeService;
     
-
-    @GetMapping("/all")
+    @CrossOrigin
+    @PostMapping("/all")
     public ResponseEntity<List<Recipe>> getAllRecipes() {
         List<Recipe> list = recipeService.getAllRecipes();
         return ResponseEntity.status(HttpStatus.OK).body(list);
     }
 
+    @CrossOrigin
     @GetMapping("/byid/{id}")
     public ResponseEntity<Recipe> getRecipeById(@PathVariable(required = false) String id ) {
         String str = new String(id);
@@ -62,6 +64,7 @@ public class RecipeController {
         return ResponseEntity.status(HttpStatus.OK).body(list);
     }
 
+    @CrossOrigin
     @PostMapping("/calrange")
     public ResponseEntity<List<Recipe>> getByCalorie(@RequestBody NewRecipeRequest req) {
        

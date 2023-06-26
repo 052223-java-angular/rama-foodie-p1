@@ -40,7 +40,7 @@ import com.revature.cookbook.utils.custom_exceptions.InvalidTokenException;
 
 import org.springframework.web.bind.annotation.CrossOrigin;
 
-@CrossOrigin
+@CrossOrigin(origins = "http://rscookbookbucket.s3-website-us-west-1.amazonaws.com")
 @AllArgsConstructor
 @RestController
 @RequestMapping("/favorite")
